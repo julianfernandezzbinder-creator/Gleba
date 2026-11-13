@@ -505,6 +505,16 @@ footer {
 
   .project-card {
     padding: 18px;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 12px rgb(252 51 97 / 16%);
+    background:
+      linear-gradient(#0c0c0c, #0c0c0c) padding-box,
+      linear-gradient(#fc3361, #fc3361) border-box;
   }
 
   .plans {

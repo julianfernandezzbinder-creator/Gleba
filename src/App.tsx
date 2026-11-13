@@ -7,19 +7,11 @@ const asset = (name: string) => `/assets/${name}`;
 
 const projects = [
   {
-    title: "Cafeteria Linda",
-    description: "Menú interactivo con variedad de productos",
-    date: "12/03/2026",
-  },
-  {
-    title: "Cafeteria Linda",
-    description: "Menú interactivo con variedad de productos",
-    date: "12/03/2026",
-  },
-  {
-    title: "Cafeteria Linda",
-    description: "Menú interactivo con variedad de productos",
-    date: "12/03/2026",
+    title: "SF Entrenamiento Online",
+    description: "Venta de cursos online de entrenamiento",
+    date: "23/07/2025",
+    url: "https://sfentrenamientoonline.com/",
+    image: "sf-entrenamiento.webp",
   },
 ];
 
@@ -78,19 +70,28 @@ function App() {
           </div>
 
           <div className="project-grid">
-            {projects.map((project, index) => (
-              <article className="project-card gradient-border" key={index}>
+            {projects.map((project) => (
+              <a
+                className="project-card gradient-border"
+                key={project.title}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img
                   className="project-card__image"
-                  src={asset("project-image-placeholder.png")}
-                  alt="Vista previa del proyecto"
+                  src={asset(project.image)}
+                  alt={`Vista previa de ${project.title}`}
+                  width={800}
+                  height={400}
+                  loading="lazy"
                 />
                 <div className="project-card__meta">
                   <h3>{project.title}</h3>
                   <time>{project.date}</time>
                   <p>{project.description}</p>
                 </div>
-              </article>
+              </a>
             ))}
           </div>
 
