@@ -1,0 +1,593 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Montserrat+Alternates:wght@800&display=swap");
+@import "tailwindcss";
+
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-UltraLight-TRIAL.otf") format("opentype"); font-weight: 100; font-style: normal; font-display: swap; }
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-ExtraLight-TRIAL.otf") format("opentype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-Light-TRIAL.otf") format("opentype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-Normal-TRIAL.otf") format("opentype"); font-weight: 350; font-style: normal; font-display: swap; }
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-Regular-TRIAL.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "FFF Acid Grotesk"; src: url("/fonts/FFF-AcidGrotesk-Medium-TRIAL.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
+
+/* =====================================================================
+   TIPOGRAFÍA: TODOS LOS TAMAÑOS Y PESOS SE CAMBIAN ACÁ
+   ===================================================================== */
+@theme static {
+  --font-sans: "FFF Acid Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-logo: "Montserrat", sans-serif;
+  --font-logo-alt: "Montserrat Alternates", sans-serif;
+
+  /* Pesos */
+  --font-weight-title: 100;    /* títulos ultra finos */
+  --font-weight-body: 100;     /* textos gruesos */
+  --font-weight-strong: 100;   /* destacados ultra finos */
+
+  /* Tamaños: títulos */
+  --text-hero: clamp(42px, 10.3vw, 52px);   /* título del hero (celular) */
+  --text-hero-lg: 72px;                     /* título del hero (desktop) */
+  --text-title: clamp(35px, 7vw, 48px);     /* títulos de sección */
+  --text-title-contact: clamp(34px, 8vw, 48px);
+  --text-card-title: 23px;                  /* título de tarjeta de cliente */
+  --text-plan-title: 22.5px;                /* título de plan de precios */
+
+  /* Tamaños: textos */
+  --text-subtitle: 21px;     /* subtítulo del hero y links del menú móvil */
+  --text-lead: 18.5px;       /* pregunta FAQ, texto de contacto */
+  --text-body: 18px;         /* texto general */
+  --text-aside: 18px;        /* "Negocios satisfechos..." */
+  --text-small: 15px;        /* respuesta FAQ */
+  --text-plan-body: 14.4px;  /* descripción de plan */
+  --text-price: 19px;        /* precio */
+  --text-nav: 17px;          /* links del menú en desktop */
+  --text-button: 18px;       /* botones */
+  --text-social: 18.5px;     /* instagram */
+
+  /* Colores */
+  --color-ink: #111;
+  --color-brand-blue: #044bd9;
+  --color-brand-purple: #8148b3;
+  --color-brand-pink: #fc3361;
+  --color-brand-gold: #ffb933;
+}
+
+/* Valores distintos en celulares chicos (≤480px) */
+@media (max-width: 480px) {
+  :root {
+    --text-aside: 15px;
+    --text-price: 16px;
+    --text-social: 14px;
+  }
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(83deg, #044bd9 4%, #8148b3 29%, #fc3361 55%, #ffb933 83%);
+}
+
+:root {
+  color: #fff;
+  background: #111;
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    min-width: 320px;
+    min-height: 100dvh;
+    background: #111;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.page-width {
+  width: min(100% - 40px, 1180px);
+  margin-inline: auto;
+}
+
+.outline-button {
+  display: inline-flex;
+  min-height: 55px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 33px;
+  padding: 0 18px;
+  border: 1px solid #044bd9;
+  border-radius: 60px;
+  background: #060606;
+  box-shadow: 0 0 12px rgb(252 51 97 / 16%);
+  font-size: var(--text-button);
+  line-height: 1;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.outline-button:hover {
+  border-color: #fc3361;
+  transform: translateY(-2px);
+}
+
+.clients {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0 38px;
+  border-radius: 21px;
+  color: #0c0c0c;
+  background: #fff;
+}
+
+.clients__mesh {
+  position: absolute;
+  top: 138px;
+  left: -25px;
+  width: 520px;
+  height: 171px;
+  pointer-events: none;
+}
+
+.section-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.section-heading h2,
+.faq h2 {
+  font-size: var(--text-title);
+  font-weight: var(--font-weight-title);
+  line-height: 0.873;
+  letter-spacing: -0.01em;
+}
+
+.section-heading--dark {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.section-heading--dark h2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-heading--dark h2 span {
+  font-weight: var(--font-weight-body);
+  line-height: 1.05;
+}
+
+.section-heading--dark p {
+  max-width: 220px;
+  text-align: right;
+  font-size: var(--text-aside);
+  font-weight: var(--font-weight-body);
+  line-height: 1.09;
+}
+
+.project-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 16px;
+  margin-top: 76px;
+}
+
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#0c0c0c, #0c0c0c) padding-box,
+    linear-gradient(115deg, #044bd9, #8148b3 35%, #fc3361 70%, #ffb933) border-box;
+}
+
+.project-card {
+  overflow: hidden;
+  padding: 20px 22px 18px;
+  border-radius: 10px;
+  color: white;
+}
+
+.project-card__image {
+  display: block;
+  width: 100%;
+  height: 166px;
+  object-fit: cover;
+}
+
+.project-card__meta {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 4px 10px;
+  margin-top: 10px;
+}
+
+.project-card h3 {
+  font-size: var(--text-card-title);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.09;
+  letter-spacing: -0.01em;
+}
+
+.project-card time,
+.project-card p {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-body);
+  line-height: 1.09;
+  letter-spacing: -0.01em;
+}
+
+.project-card p {
+  grid-column: 1 / -1;
+  max-width: 280px;
+}
+
+.more-link {
+  display: flex;
+  width: max-content;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 24px auto 0;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-body);
+}
+
+.plus {
+  position: relative;
+  display: inline-block;
+  width: 33px;
+  height: 33px;
+  flex: 0 0 33px;
+}
+
+.plus::before,
+.plus::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 33px;
+  background: currentColor;
+  content: "";
+  transition: transform 0.25s ease;
+}
+
+.plus::before {
+  transform: translate(-50%, -50%);
+}
+
+.plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.more-link .plus {
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(115deg, #044bd9, #8148b3 35%, #fc3361 70%, #ffb933) border-box;
+}
+
+.more-link .plus::before,
+.more-link .plus::after {
+  height: 20px;
+}
+
+.pricing {
+  padding: 68px 0 55px;
+}
+
+.pricing .section-heading > p {
+  max-width: 660px;
+  margin-top: 8px;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-body);
+  line-height: 1.09;
+}
+
+.plans {
+  display: grid;
+  gap: 18px;
+  margin-top: 72px;
+}
+
+.plan {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(128px, 0.8fr);
+  min-height: 125px;
+  padding: 14px;
+  border-radius: 9px;
+  box-shadow: 0 4px 9px 6px rgb(0 0 0 / 45%);
+}
+
+.plan h3 {
+  margin-bottom: 7px;
+  font-size: var(--text-plan-title);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.plan p,
+.plan__price span {
+  font-size: var(--text-plan-body);
+  font-weight: var(--font-weight-body);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.plan__price {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  padding-left: 16px;
+}
+
+.plan__divider {
+  position: absolute;
+  top: 50%;
+  left: -31px;
+  width: 59.145px;
+  height: 1.71663px;
+  transform: rotate(90deg);
+}
+
+.plan__price strong {
+  font-size: var(--text-price);
+  font-weight: var(--font-weight-strong);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.faq {
+  padding: 30px 0 45px;
+}
+
+.faq h2 {
+  text-align: center;
+}
+
+.faq__list {
+  max-width: 760px;
+  margin: 38px auto 0;
+}
+
+.faq-item {
+  border-top: 0;
+  background-image: url("/assets/faq-gradient-divider.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% 32px;
+}
+
+.faq-item button {
+  display: flex;
+  width: 100%;
+  min-height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 10px 8px;
+  border: 0;
+  color: white;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+}
+
+.faq-item button > span:first-child {
+  /*max-width: 270px; */
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-body);
+  line-height: 1.09;
+  letter-spacing: -0.01em;
+}
+
+.faq-item--open .plus::before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.faq-item__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.faq-item__answer p {
+  overflow: hidden;
+  padding: 0 55px 0 10px;
+  font-size: var(--text-small);
+  font-weight: var(--font-weight-body);
+  line-height: 1.15;
+}
+
+.faq-item--open .faq-item__answer {
+  grid-template-rows: 1fr;
+}
+
+.faq-item--open .faq-item__answer p {
+  padding-bottom: 22px;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 114px;
+  align-items: end;
+  gap: 12px;
+  padding: 18px 26px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background:
+    linear-gradient(#0c0c0c, #0c0c0c) padding-box,
+    linear-gradient(115deg, #044bd9, #8148b3 35%, #fc3361 70%, #ffb933) border-box;
+  box-shadow: 0 4px 9px 6px rgb(0 0 0 / 45%);
+}
+
+.contact h2 {
+  font-size: var(--text-title-contact);
+  font-weight: var(--font-weight-title);
+  line-height: 0.873;
+  letter-spacing: -0.01em;
+}
+
+.contact p {
+  margin: 12px 0 0;
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-body);
+  line-height: 1.09;
+}
+
+.outline-button--square {
+  margin-top: 22px;
+  border-radius: 10px;
+}
+
+.whatsapp {
+  display: grid;
+  width: 114px;
+  height: 114px;
+  place-items: center;
+  border: 1px solid #044bd9;
+  border-radius: 10px;
+  background: #060606;
+}
+
+.whatsapp img {
+  width: 71px;
+  height: 72px;
+}
+
+footer {
+  margin-top: 90px;
+  padding: 34px 0 44px;
+  background: #060606;
+}
+
+.footer__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.instagram {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--text-social);
+  font-weight: var(--font-weight-title);
+}
+
+.instagram img {
+  width: 33px;
+  height: 33px;
+  object-fit: cover;
+}
+
+@media (min-width: 700px) {
+  .clients {
+    padding-block: 70px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 62px;
+  }
+
+  .project-card {
+    padding: 18px;
+  }
+
+  .plans {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .plan {
+    grid-template-columns: 1fr;
+  }
+
+  .plan__price {
+    margin-top: 18px;
+    padding: 16px 0 0;
+  }
+
+  .plan__divider {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .faq {
+    padding-block: 70px;
+  }
+
+  .contact {
+    max-width: 900px;
+    grid-template-columns: 1fr 150px;
+    padding: 32px 42px;
+  }
+
+  .whatsapp {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading--dark p {
+    max-width: 170px;
+  }
+
+  .project-grid {
+    margin-top: 58px;
+  }
+
+  .project-card {
+    padding: 13px;
+  }
+
+  .plan {
+    grid-template-columns: minmax(0, 1.4fr) minmax(116px, 0.8fr);
+    padding: 11px;
+  }
+
+  .plan__price {
+    padding-left: 12px;
+  }
+
+  .plan__price strong {
+  }
+
+  .contact {
+    width: min(calc(100% - 20px), 430px);
+    grid-template-columns: 1fr 100px;
+    padding-inline: 18px;
+  }
+
+  .whatsapp {
+    width: 100px;
+    height: 100px;
+  }
+
+  .whatsapp img {
+    width: 63px;
+    height: auto;
+  }
+
+  .footer__content {
+    width: min(calc(100% - 30px), 1180px);
+  }
+
+  .instagram {
+  }
+
+}
