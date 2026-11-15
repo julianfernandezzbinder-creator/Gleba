@@ -17,7 +17,7 @@
   --font-logo-alt: "Montserrat Alternates", sans-serif;
 
   /* Pesos */
-  --font-weight-title: 100;    /* títulos ultra finos */
+  --font-weight-title: 300;    /* títulos ultra finos */
   --font-weight-body: 100;     /* textos gruesos */
   --font-weight-strong: 100;   /* destacados ultra finos */
 
@@ -187,6 +187,7 @@
     linear-gradient(115deg, #044bd9, #8148b3 35%, #fc3361 70%, #ffb933) border-box;
 }
 
+
 .project-card {
   overflow: hidden;
   padding: 20px 22px 18px;
@@ -194,11 +195,14 @@
   color: white;
 }
 
+
 .project-card__image {
   display: block;
   width: 100%;
-  height: 166px;
+  height: auto;
+  aspect-ratio: 2 / 1;
   object-fit: cover;
+  object-position: top;
 }
 
 .project-card__meta {
@@ -239,6 +243,7 @@
   font-size: var(--text-body);
   font-weight: var(--font-weight-body);
 }
+
 
 .plus {
   position: relative;
@@ -507,6 +512,7 @@ footer {
     padding: 18px;
     display: block;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
   }
 
   .project-card:hover {

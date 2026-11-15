@@ -3,7 +3,7 @@ import Header from "./components/layout/Header";
 import Hero from "./components/sections/Hero";
 import Logo from "./components/ui/Logo";
 
-const asset = (name: string) => `/assets/${name}`;
+const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 const projects = [
   {
@@ -94,11 +94,11 @@ function App() {
               </a>
             ))}
           </div>
-
+{/*
           <a className="more-link" href="#precios">
             Ver mas
             <span className="plus" aria-hidden="true" />
-          </a>
+          </a>*/}
         </div>
       </section>
 

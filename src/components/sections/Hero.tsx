@@ -1,6 +1,6 @@
 import Button from '../ui/Button'
 
-const asset = (name: string) => `/assets/${name}`
+const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`
 
 export default function Hero() {
   return (
@@ -12,13 +12,13 @@ export default function Hero() {
       <img
         src={asset('hero-wave-left.svg')}
         alt=""
-        className="pointer-events-none absolute -left-[250px] bottom-0 w-[746px] max-w-none md:-left-[100px]"
+        className="pointer-events-none absolute -left-[250px] bottom-0 w-[746px] max-w-none md:-left-[40px]"
       />
       
       <img
         src={asset('hero-wave-right.svg')}
         alt=""
-        className="pointer-events-none absolute -right-[100px] bottom-0 hidden w-[746px] max-w-none md:block"
+        className="pointer-events-none absolute -right-[0px] bottom-0 hidden w-[746px] max-w-none md:block"
       />
 
       <div className="relative z-[2] mx-auto w-[min(calc(100%_-_40px),1180px)]">
